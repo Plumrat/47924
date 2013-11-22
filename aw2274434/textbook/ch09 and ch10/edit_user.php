@@ -1,65 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Isshinryu karate</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="description" content="brief synapses of page"/>
-<meta name="keywords" content="important, keywords, about, page"/>
+<?php # Script 10.3 - edit_user.php
+// This page is for editing a user record.
+// This page is accessed through view_users.php.
 
-<link rel="stylesheet" href="style/index.css" />
-<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
-<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
-
-</head>
-<body>
-
-<div id="head_container">
- <h1 id="page_title">Isshinryu karate</h1>
-</div>
-
-
-<div id="body_container">
-  <a class="tab01" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
-  <a class="tab02" href="about.php" tabindex="2">About the Dojo</a>
-  <a class="tab03" href="instructors.php" tabindex="3">Instructors</a>
-  <a class="tab04" href="terms.php" tabindex="4">Terminology</a>
-  <a class="tab05" href="awards.php" tabindex="5">Awards and Honors</a>
-  
-
-
-	<div class="tabcont" id="tab01cont">
-	<img id="logo" src="fistsbeige7.png" alt="" />
-	
-		<div id="contact">
-			<h2>Contact</h2>
-			For more information and to book your free trial, call: <br />
-			760-568 0961<br /><br />
-
-			68225<br />
-			Ramon Road<br />
-			at Whispering Palms<br />
-			Cathedral City<br />
-				<div id="interact">
-				<ul id="navlist" >
-				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
-				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
-				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
-				</ul>
-				</div>
-		</div>
-			
-			
-			
-			<div id="sched_rates">
-
-
-
-
-
-
-
-<?php 
 $page_title = 'Edit a User';
+include ('includes/header.html');
 echo '<h1>Edit a User</h1>';
 
 // Check for a valid user ID, through GET or POST:
@@ -86,12 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$fn = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
 	}
-	if (!preg_match('/^\s*[A-Za-z-.\'\s]{2,40}\s*$/', $_POST ['first_name'])){
-		$errors[] = 'You may not use one or more of characters that you provided in your first name.';
-    } else {
-        $fn = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
-	}
-	
 	
 	// Check for a last name:
 	if (empty($_POST['last_name'])) {
@@ -99,29 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$ln = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
 	}
-	if (!preg_match('/^\s*[A-Za-z-.\'\s]{2,40}\s*$/', $_POST ['last_name'])){
-		$errors[] = 'You may not use one or more of characters that you provided in your last name.';
-    } else {
-        $fn = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
-	}
-	
-	
-	
-	
+
 	// Check for an email address:
 	if (empty($_POST['email'])) {
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
 		$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
 	}
-	if (empty($_POST['email'])) {
-		$errors[] = 'You forgot to enter your email address.';
-	} else {
-		$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
-	}
-	
-	
-	
 	
 	if (empty($errors)) { // If everything's OK.
 	
@@ -185,22 +107,5 @@ if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 
 mysqli_close($dbc);
 		
-
+include ('includes/footer.html');
 ?>
-
-
-
-
-
-
-
-
-		</div>
-		</div>
-		
-	</div>
-
-
-
-</body>
-</html>

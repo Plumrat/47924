@@ -1,66 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Isshinryu karate</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="description" content="brief synapses of page"/>
-<meta name="keywords" content="important, keywords, about, page"/>
+<?php # Script 9.5 - register.php #2
+// This script performs an INSERT query to add a record to the users table.
 
-<link rel="stylesheet" href="style/index.css" />
-<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
-<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
-
-</head>
-<body>
-
-<div id="head_container">
- <h1 id="page_title">Isshinryu karate</h1>
-</div>
-
-
-<div id="body_container">
-  <a class="tab01" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
-  <a class="tab02" href="about.php" tabindex="2">About the Dojo</a>
-  <a class="tab03" href="instructors.php" tabindex="3">Instructors</a>
-  <a class="tab04" href="terms.php" tabindex="4">Terminology</a>
-  <a class="tab05" href="awards.php" tabindex="5">Awards and Honors</a>
-  
-
-
-	<div class="tabcont" id="tab01cont">
-	<img id="logo" src="fistsbeige7.png" alt="" />
-	
-		<div id="contact">
-			<h2>Contact</h2>
-			For more information and to book your free trial, call: <br />
-			760-568 0961<br /><br />
-
-			68225<br />
-			Ramon Road<br />
-			at Whispering Palms<br />
-			Cathedral City<br />
-				<div id="interact">
-				<ul id="navlist" >
-				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
-				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
-				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
-				</ul>
-				</div>
-		</div>
-			
-			
-			
-			<div id="sched_rates">
-			
-			
-			
-			
-			
-			
-			
-			
-			<?php
-			$page_title = 'Register';
+$page_title = 'Register';
+include ('./includes/header.html');
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -70,21 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$errors = array(); // Initialize an error array.
 	
 	// Check for a first name:
-	if 	(empty($_POST['first_name']))
-		{
+	if (empty($_POST['first_name'])) {
 		$errors[] = 'You forgot to enter your first name.';
 	} else {
 		$fn = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
 	}
-	
-    if (!preg_match('/^\s*[A-Za-z-.\'\s]{2,40}\s*$/', $_POST ['first_name'])){
-		$errors[] = 'You may not use one or more of characters that you provided in your first name.';
-    } else {
-        $fn = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
-	}
-	
-	
-	
 	
 	// Check for a last name:
 	if (empty($_POST['last_name'])) {
@@ -93,34 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$ln = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
 	}
 	
-	
-	
-	if (!preg_match('/^\s*[A-Za-z-.\'\s]{2,40}\s*$/', $_POST ['last_name'])){
-		$errors[] = 'You may not use one or more of characters that you provided in your last name.';
-    } else {
-        $fn = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
-	}
-	
-	
-	
-	
 	// Check for an email address:
 	if (empty($_POST['email'])) {
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
 		$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
 	}
-	
-	
-	
-	if (!preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $_POST ['email'])){
-		$errors[] = 'You may not use one or more of characters that you provided in your email.';
-    } else {
-        $fn = mysqli_real_escape_string($dbc, trim($_POST['email']));
-	}
-	
-	
-	
 	
 	// Check for a password and match against the confirmed password:
 	if (!empty($_POST['pass1'])) {
@@ -133,16 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors[] = 'You forgot to enter your password.';
 	}
 	
-	
-			if (!preg_match('/^[a-z0-9_-]{6,20}$/', $_POST ['pass1'])){
-		$errors[] = 'You may not use one or more of characters that you provided in your password. Please use 6-20 characters, a-z, 0-9, "_", and "-" only.';
-    } else {
-        $fn = mysqli_real_escape_string($dbc, trim($_POST['pass1']));
-	}
-	
-	
-	
-	
 	if (empty($errors)) { // If everything's OK.
 	
 		// Register the user in the database...
@@ -154,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 			// Print a message:
 			echo '<h1>Thank you!</h1>
-		<p>You are now a registered user.</p><p><br /></p>';	
+		<p>You are now registered. In Chapter 12 you will actually be able to log in!</p><p><br /></p>';	
 		
 		} else { // If it did not run OK.
 			
@@ -169,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		mysqli_close($dbc); // Close the database connection.
 
-
+		// Include the footer and quit the script:
+		include ('includes/footer.html'); 
 		exit();
 		
 	} else { // Report the errors.
@@ -187,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 } // End of the main Submit conditional.
 ?>
-<h1 class="tabtitle">Register</h1>
+<h1>Register</h1>
 <form action="register.php" method="post">
 	<p>First Name: <input type="text" name="first_name" size="15" maxlength="20" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" /></p>
 	<p>Last Name: <input type="text" name="last_name" size="15" maxlength="40" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" /></p>
@@ -196,22 +97,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<p>Confirm Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p>
 	<p><input type="submit" name="submit" value="Register" /></p>
 </form>
-
-
-
-
-
-
-
-
-
-
-		</div>
-		</div>
-		
-	</div>
-
-
-
-</body>
-</html>
+<?php include ('includes/footer.html'); ?>

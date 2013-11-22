@@ -47,7 +47,7 @@ div#body_container>a.tab03 {
 			Cathedral City<br />
 			<div id="interact">
 				<ul id="navlist" >
-				<li><a class="navtab" id="login_tab" href="login.php">Login</a></li>
+				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
 				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
 				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
 				</ul>
