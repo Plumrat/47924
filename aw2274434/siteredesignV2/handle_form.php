@@ -1,15 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Isshinryu karate</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="description" content="brief synapses of page"/>
-<meta name="keywords" content="important, keywords, about, page"/>
-
-<link rel="stylesheet" href="style/index.css" />
-<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
-<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
-
+	<title>Isshinryu karate</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="brief synapses of page"/>
+	<meta name="keywords" content="important, keywords, about, page"/>
+	<link rel="stylesheet" href="style/index.css" />
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
+	<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
 </head>
 <body>
 
@@ -19,11 +17,11 @@
 
 
 <div id="body_container">
-  <a class="tab01" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
-  <a class="tab02" href="about.php" tabindex="2">About the Dojo</a>
-  <a class="tab03" href="instructors.php" tabindex="3">Instructors</a>
-  <a class="tab04" href="terms.php" tabindex="4">Terminology</a>
-  <a class="tab05" href="awards.php" tabindex="5">Awards and Honors</a>
+  <a class="tab01" id="tabs" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
+  <a class="tab02" id="tabs" href="about.php" tabindex="2">About the Dojo</a>
+  <a class="tab03" id="tabs" href="instructors.php" tabindex="3">Instructors</a>
+  <a class="tab04" id="tabs" href="terms.php" tabindex="4">Terminology</a>
+  <a class="tab05" id="tabs" href="awards.php" tabindex="5">Awards and Honors</a>
   
 
 
@@ -46,88 +44,62 @@
 			Cathedral City<br />
 				
 		</div>
-			
-			
-			
-			<div id="sched_rates">
-<?php 
-// Validate the name:
-if (!empty($_REQUEST['cf_name'])) {
-	$name = $_REQUEST['cf_name'];
-} else {
-	$name = NULL;
-	echo '<p class="error">You forgot to enter your name!</p>';
-}
+		<div id="leftbox">
+			<?php 
+				if (!empty($_REQUEST['cf_name'])) {
+					$name = $_REQUEST['cf_name'];
+				} else {
+					$name = NULL;
+					echo '<p class="error">You forgot to enter your name!</p>';
+				}
 
-// Validate the email:
-if (!empty($_REQUEST['cf_email'])) {
-	$email = $_REQUEST['cf_email'];
-} else {
-	$email = NULL;
-	echo '<p class="error">You forgot to enter your email address!</p>';
-}
+				// Validate the email:
+				if (!empty($_REQUEST['cf_email'])) {
+					$email = $_REQUEST['cf_email'];
+					} else {
+					$email = NULL;
+					echo '<p class="error">You forgot to enter your email address!</p>';}
 
-// phone is optional:
-if (empty($_REQUEST['cf_phone'])) {
-	$phone = $_REQUEST['cf_phone'];
-}
+				if (empty($_REQUEST['cf_phone'])) {
+					$phone = $_REQUEST['cf_phone'];}
+				
+				if (!empty($_REQUEST['cf_message'])) {
+					$message = $_REQUEST['cf_message'];
+					} else {
+					$message = NULL;
+					echo '<p class="error">You forgot to enter your message!</p>';}
 
-// Validate the message:
-if (!empty($_REQUEST['cf_message'])) {
-	$message = $_REQUEST['cf_message'];
-} else {
-	$message = NULL;
-	echo '<p class="error">You forgot to enter your message!</p>';
-}
+				if ($name && $email && $message) {
+					echo "<p>Thank you, <b>$name</b>, for the following message:<br />
+					<tt>$message</tt></p>
+					<p>We will reply to you at <i>$email</i>.</p>\n";
+					} else {
+					echo '<p class="error">Please go back and fill out the form again.</p>';}
 
+				$mail_to = 'plumrat@gmail.com';
+				$subject = 'Message from a site visitor '.$name;
+				$body_message = 'From: '.$name."\n";
+				$body_message .= 'E-mail: '.$email."\n";
+				$body_message .= 'Phone: '.$phone."\n";
+				$body_message .= 'Message: '.$message;
 
+				$headers = 'From: '.$email."\r\n";
+				$headers .= 'Reply-To: '.$email."\r\n";
+				$mail_status = mail($mail_to, $subject, $body_message, $headers);
 
-// If everything is OK, print the message:
-if ($name && $email && $message) {
-
-	echo "<p>Thank you, <b>$name</b>, for the following message:<br />
-	<tt>$message</tt></p>
-	<p>We will reply to you at <i>$email</i>.</p>\n";
-	
-	
-	
-} else { // Missing form value.
-	echo '<p class="error">Please go back and fill out the form again.</p>';
-}
-
-$mail_to = 'plumrat@gmail.com';
-$subject = 'Message from a site visitor '.$name;
-$body_message = 'From: '.$name."\n";
-$body_message .= 'E-mail: '.$email."\n";
-$body_message .= 'Phone: '.$phone."\n";
-$body_message .= 'Message: '.$message;
-
-$headers = 'From: '.$email."\r\n";
-$headers .= 'Reply-To: '.$email."\r\n";
-$mail_status = mail($mail_to, $subject, $body_message, $headers);
-
-	if ($mail_status) { ?>
-		<script language="javascript" type="text/javascript">
-			alert('Thank you for the message. We will contact you shortly.');
-			//window.location = 'contact_form.php';
-		</script><?php
-	}
-	else { ?>
-		<script language="javascript" type="text/javascript">
-			alert('Message failed. Please, send an email to plumrat@gmail.com');
-			//window.location = 'contact_form.php';
-		</script><?php
-	}
-
-	
-	?>
-
+					if ($mail_status) { ?>
+						<script language="javascript" type="text/javascript">
+							alert('Thank you for the message. We will contact you shortly.');
+							//window.location = 'contact_form.php';
+						</script><?php}
+						else { ?>
+						<script language="javascript" type="text/javascript">
+							alert('Message failed. Please, send an email to plumrat@gmail.com');
+							//window.location = 'contact_form.php';
+						</script><?php}
+			?>
 		</div>
-		</div>
-		
 	</div>
-
-
-
+</div>
 </body>
 </html>

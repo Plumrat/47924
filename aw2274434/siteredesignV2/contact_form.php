@@ -1,15 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Isshinryu karate</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="description" content="brief synapses of page"/>
-<meta name="keywords" content="important, keywords, about, page"/>
-
-<link rel="stylesheet" href="style/index.css" />
-<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
-<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
-
+	<title>Isshinryu karate</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="brief synapses of page"/>
+	<meta name="keywords" content="important, keywords, about, page"/>
+	<link rel="stylesheet" href="style/index.css" />
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
+	<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
 </head>
 <body>
 
@@ -19,11 +17,11 @@
 
 
 <div id="body_container">
-  <a class="tab01" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
-  <a class="tab02" href="about.php" tabindex="2">About the Dojo</a>
-  <a class="tab03" href="instructors.php" tabindex="3">Instructors</a>
-  <a class="tab04" href="terms.php" tabindex="4">Terminology</a>
-  <a class="tab05" href="awards.php" tabindex="5">Awards and Honors</a>
+  <a class="tab01" id="tabs" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
+  <a class="tab02" id="tabs" href="about.php" tabindex="2">About the Dojo</a>
+  <a class="tab03" id="tabs" href="instructors.php" tabindex="3">Instructors</a>
+  <a class="tab04" id="tabs" href="terms.php" tabindex="4">Terminology</a>
+  <a class="tab05" id="tabs" href="awards.php" tabindex="5">Awards and Honors</a>
   
 
 
@@ -46,39 +44,17 @@
 			Cathedral City<br />
 				
 		</div>
-			
-			
-			
-			<div id="sched_rates">
+		<div id="leftbox">
 
-
-
-
-
-
-
-<form action="handle_form.php" method="post">
-
-	<fieldset><legend>Enter your information in the form below:</legend>
-	
-	<p><label>Name: <input type="text" name="cf_name" size="20" maxlength="30" /></label></p>
-	
-	<p><label>Email Address: <input type="text" name="cf_email" size="40" maxlength="20" /></label></p>
-	
-	<p><label>Phone: <input type="text" name="cf_phone" size="40" maxlength="20" /></label></p>
-	
-	<p><label>Message: <textarea name="cf_message" rows="3" cols="40" maxlength="240"></textarea></label></p>
-	
-	</fieldset>
-	
-	<p align="center"><input type="submit" name="cf_submit" value="Submit My Information" /></p>
-
-</form>
-
-
-
-
-
+		<form action="handle_form.php" method="post">
+			<fieldset><legend>Enter your information in the form below:</legend>
+			<p><label>Name: <input type="text" name="cf_name" size="20" maxlength="30" /></label></p>
+			<p><label>Email Address: <input type="text" name="cf_email" size="40" maxlength="20" /></label></p>
+			<p><label>Phone: <input type="text" name="cf_phone" size="40" maxlength="20" /></label></p>
+			<p><label>Message: <textarea name="cf_message" rows="3" cols="40" maxlength="240"></textarea></label></p>
+			</fieldset>
+			<p align="center"><input type="submit" name="cf_submit" value="Submit My Information" /></p>
+		</form>
 
 		</div>
 		</div>
