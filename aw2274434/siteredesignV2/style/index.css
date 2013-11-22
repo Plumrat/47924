@@ -9,7 +9,7 @@ visibility:visible;
 						}
 
 html	{
-	background:#000000; /*url(parch.jpg) repeat-y*/
+	background:#000000;
 	}						
 body,h1	{
 	margin:0;
@@ -208,7 +208,7 @@ img#logo	{
 
 
 
-#contact	{
+#rightbox	{
 position:absolute;
 top:0;
 right:0;
@@ -224,9 +224,9 @@ background-color:#770000;
 
 
 
-#interact	{
+#control_panel	{
 position:relative;
-top:25px;
+top:0px;
 font-family:sans-serif;
 text-align:left;
 color:#c3ab84;

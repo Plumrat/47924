@@ -29,9 +29,14 @@
 
 	<div class="tabcont" id="tab01cont">
 	<img id="logo" src="fistsbeige7.png" alt="" />
-	
-		<div id="contact">
-			<h2>Contact</h2>
+		<div id="rightbox">
+				<div id="control_panel">
+				<ul id="navlist" >
+				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
+				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
+				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
+				</ul>
+				</div>
 			For more information and to book your free trial, call: <br />
 			760-568 0961<br /><br />
 
@@ -39,13 +44,7 @@
 			Ramon Road<br />
 			at Whispering Palms<br />
 			Cathedral City<br />
-				<div id="interact">
-				<ul id="navlist" >
-				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
-				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
-				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
-				</ul>
-				</div>
+				
 		</div>
 			
 			
@@ -53,62 +52,75 @@
 			<div id="sched_rates">
 <?php 
 // Validate the name:
-if (!empty($_REQUEST['name'])) {
-	$name = $_REQUEST['name'];
+if (!empty($_REQUEST['cf_name'])) {
+	$name = $_REQUEST['cf_name'];
 } else {
 	$name = NULL;
 	echo '<p class="error">You forgot to enter your name!</p>';
 }
 
 // Validate the email:
-if (!empty($_REQUEST['email'])) {
-	$email = $_REQUEST['email'];
+if (!empty($_REQUEST['cf_email'])) {
+	$email = $_REQUEST['cf_email'];
 } else {
 	$email = NULL;
 	echo '<p class="error">You forgot to enter your email address!</p>';
 }
 
-// Validate the comments:
-if (!empty($_REQUEST['comments'])) {
-	$comments = $_REQUEST['comments'];
+// phone is optional:
+if (empty($_REQUEST['cf_phone'])) {
+	$phone = $_REQUEST['cf_phone'];
+}
+
+// Validate the message:
+if (!empty($_REQUEST['cf_message'])) {
+	$message = $_REQUEST['cf_message'];
 } else {
-	$comments = NULL;
-	echo '<p class="error">You forgot to enter your comments!</p>';
+	$message = NULL;
+	echo '<p class="error">You forgot to enter your message!</p>';
 }
 
-// Validate the gender:
-if (isset($_REQUEST['gender'])) {
 
-	$gender = $_REQUEST['gender'];
-	
-	if ($gender == 'M') {
-		$greeting = '<p><b>Good day, Sir!</b></p>';
-	} elseif ($gender == 'F') {
-		$greeting = '<p><b>Good day, Madam!</b></p>';
-	} else { // Unacceptable value.
-		$gender = NULL;
-		echo '<p class="error">Gender should be either "M" or "F"!</p>';
-	}
-	
-} else { // $_REQUEST['gender'] is not set.
-	$gender = NULL;
-	echo '<p class="error">You forgot to select your gender!</p>';
-}
 
 // If everything is OK, print the message:
-if ($name && $email && $gender && $comments) {
+if ($name && $email && $message) {
 
-	echo "<p>Thank you, <b>$name</b>, for the following comments:<br />
-	<tt>$comments</tt></p>
+	echo "<p>Thank you, <b>$name</b>, for the following message:<br />
+	<tt>$message</tt></p>
 	<p>We will reply to you at <i>$email</i>.</p>\n";
 	
-	echo $greeting;
+	
 	
 } else { // Missing form value.
 	echo '<p class="error">Please go back and fill out the form again.</p>';
 }
 
-?>
+$mail_to = 'plumrat@gmail.com';
+$subject = 'Message from a site visitor '.$name;
+$body_message = 'From: '.$name."\n";
+$body_message .= 'E-mail: '.$email."\n";
+$body_message .= 'Phone: '.$phone."\n";
+$body_message .= 'Message: '.$message;
+
+$headers = 'From: '.$email."\r\n";
+$headers .= 'Reply-To: '.$email."\r\n";
+$mail_status = mail($mail_to, $subject, $body_message, $headers);
+
+	if ($mail_status) { ?>
+		<script language="javascript" type="text/javascript">
+			alert('Thank you for the message. We will contact you shortly.');
+			//window.location = 'contact_form.php';
+		</script><?php
+	}
+	else { ?>
+		<script language="javascript" type="text/javascript">
+			alert('Message failed. Please, send an email to plumrat@gmail.com');
+			//window.location = 'contact_form.php';
+		</script><?php
+	}
+
+	
+	?>
 
 		</div>
 		</div>

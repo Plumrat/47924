@@ -29,9 +29,14 @@
 
 	<div class="tabcont" id="tab01cont">
 	<img id="logo" src="fistsbeige7.png" alt="" />
-	
-		<div id="contact">
-			<h2>Contact</h2>
+		<div id="rightbox">
+				<div id="control_panel">
+				<ul id="navlist" >
+				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
+				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
+				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
+				</ul>
+				</div>
 			For more information and to book your free trial, call: <br />
 			760-568 0961<br /><br />
 
@@ -39,13 +44,7 @@
 			Ramon Road<br />
 			at Whispering Palms<br />
 			Cathedral City<br />
-				<div id="interact">
-				<ul id="navlist" >
-				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
-				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
-				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
-				</ul>
-				</div>
+				
 		</div>
 			
 			
@@ -62,17 +61,17 @@
 
 	<fieldset><legend>Enter your information in the form below:</legend>
 	
-	<p><label>Name: <input type="text" name="name" size="20" maxlength="40" /></label></p>
+	<p><label>Name: <input type="text" name="cf_name" size="20" maxlength="30" /></label></p>
 	
-	<p><label>Email Address: <input type="text" name="email" size="40" maxlength="60" /></label></p>
+	<p><label>Email Address: <input type="text" name="cf_email" size="40" maxlength="20" /></label></p>
 	
-	<p><label>Phone: <input type="text" name="phone" size="40" maxlength="60" /></label></p>
+	<p><label>Phone: <input type="text" name="cf_phone" size="40" maxlength="20" /></label></p>
 	
-	<p><label>Comments: <textarea name="comments" rows="3" cols="40"></textarea></label></p>
+	<p><label>Message: <textarea name="cf_message" rows="3" cols="40" maxlength="240"></textarea></label></p>
 	
 	</fieldset>
 	
-	<p align="center"><input type="submit" name="submit" value="Submit My Information" /></p>
+	<p align="center"><input type="submit" name="cf_submit" value="Submit My Information" /></p>
 
 </form>
 

@@ -36,8 +36,14 @@ div#body_container>a.tab03 {
 
 	<div class="tabcont" id="tab01cont">
 	<img id="logo" src="fistsbeige7.png" alt="" />
-		<div id="contact">
-			<h2>Contact</h2>
+		<div id="rightbox">
+				<div id="control_panel">
+				<ul id="navlist" >
+				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
+				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
+				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
+				</ul>
+				</div>
 			For more information and to book your free trial, call: <br />
 			760-568 0961<br /><br />
 
@@ -45,13 +51,7 @@ div#body_container>a.tab03 {
 			Ramon Road<br />
 			at Whispering Palms<br />
 			Cathedral City<br />
-			<div id="interact">
-				<ul id="navlist" >
-				<li><a class="navtab" id="contact_tab" href="contact_form.php">Contact Form</a></li>
-				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
-				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
-				</ul>
-				</div>
+
 		</div>
 			
 		<div id="sched_rates">
