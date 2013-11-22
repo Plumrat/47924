@@ -7,30 +7,22 @@
 <meta name="keywords" content="important, keywords, about, page"/>
 
 <link rel="stylesheet" href="style/index.css" />
-<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
-<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
+
 
 </head>
 <body>
-<style>
-div#body_container>a.tab05 {
-	background:url(button-hov.png) no-repeat center;
-	}
-#tab05cont{
-	visibility:visible;
-	}
-</style>
+
 <div id="head_container">
  <h1 id="page_title">Isshinryu karate</h1>
 </div>
 
 
 <div id="body_container">
-  <a class="tab01" href="index.php" tabindex="1">&nbsp; Home &nbsp;</a>
-  <a class="tab02" href="about.php" tabindex="2">About the Dojo</a>
-  <a class="tab03" href="instructors.php" tabindex="3">Instructors</a>
-  <a class="tab04" href="terms.php" tabindex="4">Terminology</a>
-  <a class="tab05" href="awards.php" tabindex="5">Awards and Honors</a>
+  <a class="tab01" href="#" tabindex="1">&nbsp; Home &nbsp;</a>
+  <a class="tab02" href="#" tabindex="2">About the Dojo</a>
+  <a class="tab03" href="#" tabindex="3">Instructors</a>
+  <a class="tab04" href="#" tabindex="4">Terminology</a>
+  <a class="tab05" href="#" tabindex="5">Awards and Honors</a>
   
 
 
@@ -45,13 +37,6 @@ div#body_container>a.tab05 {
 			Ramon Road<br />
 			at Whispering Palms<br />
 			Cathedral City<br />
-			<div id="interact">
-				<ul id="navlist" >
-				<li><a class="navtab" id="login_tab" href="login.php">Login</a></li>
-				<li><a class="navtab" id="reg_tab" href="register.php">Register</a></li>
-				<li><a class="navtab" id="users_tab" href="view_users.php">View Users</a></li>
-				</ul>
-				</div>
 		</div>
 			
 		<div id="sched_rates">
@@ -116,12 +101,12 @@ div#body_container>a.tab05 {
   
 					<?php
 					
-                             //mysql_connect('209.129.8.3', '47924', '47924cis12');
+                              //mysql_connect('209.129.8.3', '47924', '47924cis12');
                               //mysql_select_db('47924');
                                 mysql_connect('localhost', 'root', '47924cis12');
                                 mysql_select_db('47924');
                     
-                            $query1="SELECT `aw2274434_karate_entity_instructors`.`image`, `aw2274434_karate_entity_instructors`.`name`, `aw2274434_karate_enum_belt`.`belt`, `aw2274434_karate_entity_instructors`.`bio` FROM `47924`.`aw2274434_karate_enum_belt` AS `aw2274434_karate_enum_belt`, `47924`.`aw2274434_karate_entity_instructors` AS `aw2274434_karate_entity_instructors` WHERE `aw2274434_karate_enum_belt`.`belt_id` = `aw2274434_karate_entity_instructors`.`belt_id` ORDER BY `aw2274434_karate_entity_instructors`.`image_yn` DESC, `aw2274434_karate_enum_belt`.`belt` DESC;";
+                            $query1="SELECT `aw2274434_karate_entity_instructors`.`image`, `aw2274434_karate_entity_instructors`.`name`, `aw2274434_karate_enum_belt`.`belt`, `aw2274434_karate_entity_instructors`.`bio` FROM `47924`.`aw2274434_karate_enum_belt` AS `aw2274434_karate_enum_belt`, `47924`.`aw2274434_karate_entity_instructors` AS `aw2274434_karate_entity_instructors` WHERE `aw2274434_karate_enum_belt`.`belt_id` = `aw2274434_karate_entity_instructors`.`belt_id` ORDER BY `aw2274434_karate_enum_belt`.`belt` DESC;";
                             $rs = mysql_query($query1);
                             if (!$rs) {
                                 die('Invalid query: ' . mysql_error());
@@ -129,7 +114,7 @@ div#body_container>a.tab05 {
                                 echo "<table width='599' class='table'>";
                                 echo "<th colspan=4>Instructors</th>";
                             while ($re = mysql_fetch_array($rs))	{
-                                    echo "<tr><td><img src='".$re['image']."' width='100px'></td>";
+                                    echo "<tr><td><img src='".$re['image']."'></td>";
 									echo "<td>".$re['name']."</td>";
 									echo "<td>".$re['belt']."</td>";
                                     echo "<td>".$re['bio']."</td></tr>";

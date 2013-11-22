@@ -1,9 +1,9 @@
 /*
-V2
+V1
 Allison Woods
-11/19/13	*/
-
-
+10/30/13	*/
+/*	a tweak to overcome Safari's
+  problem with multiple adjacent selectors	*/
 a.tab05:hover~div#tab05cont	{
 visibility:visible;
 						}
@@ -70,11 +70,18 @@ div#body_container>a	{
 	font-family:sans-serif;
 	
 	color:#c3ab84;
-			}				
-			
-			
-			
-			
+			}			
+div#body_container>a:hover	{
+	background:url(button-hov.png) no-repeat center;
+	}	
+div#body_container>a:active,
+div#body_container>a:focus	{
+	text-decoration:none;
+	background:url(button-in.png) no-repeat center;
+				} 
+				
+
+
 .tab01,		
 .tab02,
 .tab03,
@@ -113,7 +120,7 @@ line-height:1.5;
 	top:-78px;
 	left:25px;
 	margin:50px auto 0 0;
-	padding:0 50px 0 25px;
+	padding:0 50px 0 50px;
 	font:.8em sans-serif;
 	text-align:justify;
 	line-height:1.3;
@@ -133,12 +140,13 @@ h1.tabtitle {
 	color:#c3ab84;
 	font:bold 1.6em sans-serif;
 	overflow:hidden;
-}
+}	
+
 
 
 #tab01cont	{
 	visibility:visible;
-	width:549px;
+	width:524px;
 	height:auto;
 	color:#c3ab84;
 	background:url(boxbg.png);
@@ -149,42 +157,33 @@ h1.tabtitle {
 #tab03cont,
 #tab04cont,
 #tab05cont	{
-	width:549px;
-	height:400px;
+	width:524px;
+	height:420px;
 	background:url(boxbg.png);
 	background-repeat:repeat-y;
 	color:#c3ab84;
 	overflow:auto;
 		}
-		
-		
-	.table	{
+				
+	
+.table	{
 
 	position:relative;
 	left:0px;
 	background:url(boxbg.png);
 	background-repeat:repeat-y;
-	/*border-spacing:10px;*/
-    border-collapse:collapse;
-	border: none;
-	width:549px;
+	border-right:solid 0px #770000;
+	padding-bottom:solid 2px #5e0000;
+	
+	width:599px;
 	font:1em sans-serif;
 	text-align:left;
-
 }
 
+.tableh2	{
+		}
 
 
-td	{
-	border-bottom:1px solid #5e0000;
-	margin:0;
-	padding:10px 5px 2px 5px;
-}
-
-tr	{
-	margin:0;
-	padding:0;
-}
 
 
 tr:hover	{
@@ -200,7 +199,7 @@ img#logo	{
 	top:-150px;
 	right:0;
 	bottom:0;
-	left:499px;
+	left:549px;
 	visibility:visible;
 		}
 		
@@ -222,62 +221,8 @@ font-weight:bold;
 background-color:#770000;
 }
 
-
-
-#interact	{
-position:relative;
-top:25px;
-font-family:sans-serif;
-text-align:left;
-color:#c3ab84;
-text-decoration:none;
-font-weight:bold;
-text-decoration:none;
-font-size:1.5em;
-
-}
-
-a:link,
-a:active,
-a:focus,
-a:visited	{
-color:#c3ab84;
-text-decoration:none;
-outline:none;
-}
-
-a:hover	{
-color:#e1d5c1;
-text-decoration:none;
-outline:none;
-}
-
-
-
-a.navtab:link,
-a.navtab:active,
-a.navtab:visited	{
-list-style:none;
-border-bottom:solid #5e0000 1px;
-color:#c3ab84;
-}
-a.navtab:hover
-	{
-list-style:none;
-border-bottom:solid #380000 1px;
-color:#e1d5c1;
-
-}
-
-ul#navlist	{
-list-style:none;
-line-height:2;
-padding:5px 5px 2px 5px;
-}
-
 #sched_rates	{
 width:449px;
-height:360px;
 padding-right:50px;
 				}
 				
