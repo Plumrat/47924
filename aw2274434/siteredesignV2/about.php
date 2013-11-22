@@ -14,9 +14,6 @@
 div#body_container>a.tab02 {
 	background:url(button-hov.png) no-repeat center;
 	}
-#tab02cont{
-	visibility:visible;
-	}
 </style>
 <div id="head_container">
  <h1 id="page_title">Isshinryu karate</h1>

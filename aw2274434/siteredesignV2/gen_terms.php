@@ -46,23 +46,35 @@ div#body_container>a.tab04 {
 		<div id="leftbox">
 		<h1 class="tabtitle">Terminology</h1>
 		
-		<table style="font:bold 1.5em sans-serif;padding:10px 25px 0 25px;text-align:left;border-spacing:10px;">
-		<tr><th><a class="navtab" href="blocks_terms.php">Blocks</a></th>
-			<th><a class="navtab" href="stances_terms.php">Stances</a></th></tr>
-		<tr><th><a class="navtab" href="weapons_terms.php">Weapons</a></th>
-			<th><a class="navtab" href="gen_terms.php">General Terms</a></th></tr>
-		<tr><th><a class="navtab" href="strikes_terms.php">Strikes and Punches</a></th>
-			<th><a class="navtab" href="tourn_terms.php">Tournament Terms</a></th></tr>
-		<tr><th><a class="navtab" href="kicks_terms.php">Kicks and Foot Techniques</a></th>
-			<th>&nbsp;</th></tr>
-		</table>
-		
-		
-		
-			<p>The preceding Translations were borrowed with the permission of a great Web Site,  I requested permission to use the "Translations" and received permission… with the request that I would give credit to their site…..Well as we were retyping and editing  and adding and subtracting…….I lost the Site to whom I owe the credit for this page of Translations,……First my apologies….Secondly if anyone that reads this page can Please advise me of the site I will do the following……1. Apologize and 2. Give proper credit where it is due.</p>
-			<br />
-			Sincerely,  With Respect, <br /> 
-			Arnold R Sandubrae
+		<p style="font:bold 1em sans-serif;padding:10px 10px -40px 10px;text-align:center;">
+			<a class="navtab" href="blocks_terms.php">Blocks</a>
+			<a class="navtab" href="stances_terms.php">Stances</a>
+			<a class="navtab" href="weapons_terms.php">Weapons</a>
+			<a class="navtab" href="gen_terms.php">General Terms</a>
+			<a class="navtab" href="strikes_terms.php">Strikes and Punches</a>
+			<a class="navtab" href="tourn_terms.php">Tournament Terms</a>
+			<a class="navtab" href="kicks_terms.php">Kicks and Foot Techniques</a>
+			</p>
+
+		<?php
+		include("../connect.php");
+                    
+            $query7="SELECT `aw2274434_karate_entity_terms`.`term` AS `Term`, `aw2274434_karate_entity_terms`.`meaning` AS `Meaning` FROM `47924`.`aw2274434_karate_entity_terms` AS `aw2274434_karate_entity_terms`, `47924`.`aw2274434_karate_enum_termtype` AS `aw2274434_karate_enum_termtype` WHERE `aw2274434_karate_enum_termtype`.`termtype_id` = 6 ORDER BY `Term` ASC;";
+                            $rs7 = mysql_query($query7);
+                            if (!$rs7) {
+                                die('Invalid query: ' . mysql_error());
+                            }
+                                echo "<table class='table'>";
+                                echo "<th colspan=2><h2>General Terminology</h2></th>";
+                                echo "<tr><th>".'Term'."</th>";
+                                echo "<th>".'Meaning'."</th></tr>";
+                            while ($re7 = mysql_fetch_array($rs7))	{
+                                      echo "<tr><td>".$re7['Term']."</td>";
+                                      echo "<td>".$re7['Meaning']."</td></tr>";
+                            }
+                            echo "</table><br /><br /><br />";
+		?>
+
 		</div>
 		</div>
 		</div>

@@ -56,10 +56,7 @@ div#body_container>a.tab03 {
 		<h1 class="tabtitle">Instructors</h1>
 					<?php
 					
-                              //mysql_connect('209.129.8.3', '47924', '47924cis12');
-                              //mysql_select_db('47924');
-                                mysql_connect('localhost', 'root', '47924cis12');
-                                mysql_select_db('47924');
+                              include("../connect.php");
                     
                             $query1="SELECT `aw2274434_karate_entity_instructors`.`image`, `aw2274434_karate_entity_instructors`.`name`, `aw2274434_karate_enum_belt`.`belt`, `aw2274434_karate_entity_instructors`.`bio` FROM `47924`.`aw2274434_karate_enum_belt` AS `aw2274434_karate_enum_belt`, `47924`.`aw2274434_karate_entity_instructors` AS `aw2274434_karate_entity_instructors` WHERE `aw2274434_karate_enum_belt`.`belt_id` = `aw2274434_karate_entity_instructors`.`belt_id` ORDER BY `aw2274434_karate_entity_instructors`.`image_yn` DESC, `aw2274434_karate_enum_belt`.`belt` DESC;";
                             $rs = mysql_query($query1);

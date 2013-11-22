@@ -10,7 +10,11 @@
 	<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
 </head>
 <body>
-
+<style>
+div#body_container>a.tab01 {
+	background:url(button-hov.png) no-repeat center;
+	}
+</style>
 <div id="head_container">
  <h1 id="page_title">Isshinryu karate</h1>
 </div>

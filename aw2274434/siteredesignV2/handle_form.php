@@ -53,7 +53,6 @@
 					echo '<p class="error">You forgot to enter your name!</p>';
 				}
 
-				// Validate the email:
 				if (!empty($_REQUEST['cf_email'])) {
 					$email = $_REQUEST['cf_email'];
 					} else {
@@ -96,7 +95,8 @@
 						<script language="javascript" type="text/javascript">
 							alert('Message failed. Please, send an email to plumrat@gmail.com');
 							//window.location = 'contact_form.php';
-						</script><?php}
+						</script><?php
+						}
 			?>
 		</div>
 	</div>
