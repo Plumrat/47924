@@ -71,16 +71,16 @@
 				if ($name && $email && $message) {
 					echo "<p>Thank you, <b>$name</b>, for the following message:<br />
 					<tt>$message</tt></p>
-					<p>We will reply to you at <i>$email</i>.</p>\n";
+					<p>We will reply to you at <i>$email</i>.</p>\r\n";
 					} else {
 					echo '<p class="error">Please go back and fill out the form again.</p>';}
 
-				$mail_to = 'plumrat@gmail.com';
-				$subject = 'Message from a site visitor '.$name;
-				$body_message = 'From: '.$name."\n";
-				$body_message .= 'E-mail: '.$email."\n";
-				$body_message .= 'Phone: '.$phone."\n";
-				$body_message .= 'Message: '.$message;
+				$mail_to = 'allison@ccr.tv';
+				$subject = 'Message from an isshinryu karate site visitor: '.$name."\r\n";
+				$body_message = 'From: '.$name."\r\n";
+				$body_message .= 'E-mail: '.$email."\r\n";
+				$body_message .= 'Phone: '.$phone."\r\n";
+				$body_message .= 'Message: '.$message."\r\n";
 
 				$headers = 'From: '.$email."\r\n";
 				$headers .= 'Reply-To: '.$email."\r\n";
@@ -89,12 +89,12 @@
 					if ($mail_status) { ?>
 						<script language="javascript" type="text/javascript">
 							alert('Thank you for the message. We will contact you shortly.');
-							//window.location = 'contact_form.php';
+							window.location = 'contact_form.php';
 						</script><?php}
 						else { ?>
 						<script language="javascript" type="text/javascript">
-							alert('Message failed. Please, send an email to plumrat@gmail.com');
-							//window.location = 'contact_form.php';
+							alert('Message failed. Please, send an email to allison@ccr.tv');
+							window.location = 'contact_form.php';
 						</script><?php
 						}
 			?>

@@ -75,7 +75,7 @@
 					} else {
 					echo '<p class="error">Please go back and fill out the form again.</p>';}
 
-				$mail_to = 'plumrat@gmail.com';
+				$mail_to = 'plumrat@hotmail.com';
 				$subject = 'Message from a site visitor '.$name;
 				$body_message = 'From: '.$name."\n";
 				$body_message .= 'E-mail: '.$email."\n";
@@ -93,7 +93,7 @@
 						</script><?php}
 						else { ?>
 						<script language="javascript" type="text/javascript">
-							alert('Message failed. Please, send an email to plumrat@gmail.com');
+							alert('Message failed. Please, send an email to plumrat@hotmail.com');
 							//window.location = 'contact_form.php';
 						</script><?php
 						}
