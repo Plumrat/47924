@@ -6,8 +6,8 @@
 	<meta name="description" content="Isshinryu style karate Dojo"/>
 	<meta name="keywords" content="important, keywords, about, page"/>
 	<link rel="stylesheet" href="style/index.css" />
-	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
-	<link rel="stylesheet" media="screen, handheld, print, projection href="style/mobile.css" />
+	<!--	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="style/mobile.css" />
+	<link rel="stylesheet" media="screen, handheld, print, projection" href="style/mobile.css" />-->
 </head>
 <body>
 <style>
