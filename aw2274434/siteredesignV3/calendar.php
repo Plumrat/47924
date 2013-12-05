@@ -1,7 +1,7 @@
 <?php
 
 
-include("../mysqli_connect.php");
+include("../connect.php");
 
 
 
@@ -10,17 +10,18 @@ include("../mysqli_connect.php");
 (intval($_REQUEST["year"])>0) ? $cYear = intval($_REQUEST["year"]) : $cYear = date("Y");
 
  
- $events = array();
-$q = "SELECT title, description, DATE_FORMAT(event_date,'%Y-%m-%D') AS event_date FROM aw2274434_karate_events WHERE event_date LIKE '".$cYear."-".$cMonth."-%'";
-$r = @mysqli_query ($dbc, $q) or die ('request "Could not execute SQL query" '.$q);
-while($row = mysqli_fetch_assoc($r)) {
-	$events[$row['event_date']][] = $row;
+
+$q = "SELECT title, description, DATE_FORMAT(event_date,'%Y-%m-%d') AS event_date FROM aw2274434_karate_events WHERE event_date LIKE '".$cYear."-".$cMonth."-%'";
+$r = mysql_query ($q, $conn) or die ('request "Could not execute SQL query" '.$q);
+while($row = mysql_fetch_assoc($r)) {
+	$events[$row["event_date"]]["title"] = $row["title"];
+	$events[$row["event_date"]]["description"] = $row["description"];
  }
  
 $prev_year = $cYear;
 $next_year = $cYear;
-$prev_month = $cMonth-1;
-$next_month = $cMonth+1;
+$prev_month = intval ($cMonth)-1;
+$next_month = intval ($cMonth)+1;
  
 if ($prev_month == 0 ) {
     $prev_month = 12;
