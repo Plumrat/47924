@@ -1,5 +1,5 @@
 	<?php
-	
+	session_start();
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,7 +11,7 @@ div#body_container>a.tab01 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
+<!-------------------------------------Register------------------------------------->
 				<div id="leftbox">
 				<?php
 				
@@ -19,7 +19,19 @@ div#body_container>a.tab01 {
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					require ('../mysqli_connect.php');
 					$errors = array();
-	
+					
+					if 	(empty($_POST['username'])){
+						$errors[] = 'You forgot to enter your username.';
+						} else {
+						$un = mysqli_real_escape_string($dbc, trim($_POST['username']));
+						}
+						
+						if (!preg_match('/^\s*[A-Za-z0-9_\s]{4,30}\s*$/', $_POST ['username'])){
+						$errors[] = 'You may not use one or more of characters that you provided in your username.';
+						} else {
+						$un = mysqli_real_escape_string($dbc, trim($_POST['username']));
+						}
+						
 					if 	(empty($_POST['first_name'])){
 						$errors[] = 'You forgot to enter your first name.';
 						} else {
@@ -73,7 +85,7 @@ div#body_container>a.tab01 {
 						}
 	
 					if (empty($errors)) {
-						$q = "INSERT INTO aw2274434_users (first_name, last_name, email, pass, registration_date) VALUES ('$fn', '$ln', '$e', SHA1('$p'), NOW() )";		
+						$q = "INSERT INTO aw2274434_users (username, first_name, last_name, email, pass, registration_date) VALUES ('$un', '$fn', '$ln', '$e', SHA1('$p'), NOW() )";		
 						$r = @mysqli_query ($dbc, $q);
 						if ($r) { 
 							echo '<h1>Thank you!</h1>
@@ -98,6 +110,7 @@ div#body_container>a.tab01 {
 				?>
 				<h1 class="tabtitle">Register</h1>
 				<form action="register.php" method="post">
+                	<p>Username: <input type="text" name="username" size="15" maxlength="20" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" /></p>
 					<p>First Name: <input type="text" name="first_name" size="15" maxlength="20" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" /></p>
 					<p>Last Name: <input type="text" name="last_name" size="15" maxlength="40" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" /></p>
 					<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  /> </p>

@@ -31,15 +31,15 @@ function redirect_user ($page = '../index.php') {
  * - a TRUE/FALSE variable indicating success
  * - an array of either errors or the database result
  */
-function check_login($dbc, $email = '', $pass = '') {
+function check_login($dbc, $username = '', $pass = '') {
 
 	$errors = array(); // Initialize error array.
 
 	// Validate the email address:
-	if (empty($email)) {
-		$errors[] = 'You forgot to enter your email address.';
+	if (empty($username)) {
+		$errors[] = 'You forgot to enter your username.';
 	} else {
-		$e = mysqli_real_escape_string($dbc, trim($email));
+		$u = mysqli_real_escape_string($dbc, trim($username));
 	}
 
 	// Validate the password:
@@ -52,7 +52,7 @@ function check_login($dbc, $email = '', $pass = '') {
 	if (empty($errors)) { // If everything's OK.
 
 		// Retrieve the user_id and first_name for that email/password combination:
-		$q = "SELECT user_id, first_name FROM aw2274434_users WHERE email='$e' AND pass=SHA1('$p')";		
+		$q = "SELECT user_id, username, first_name FROM aw2274434_karate_users WHERE username='$u' AND pass=SHA1('$p')";		
 		$r = @mysqli_query ($dbc, $q); // Run the query.
 		
 		// Check the result:
@@ -65,7 +65,7 @@ function check_login($dbc, $email = '', $pass = '') {
 			return array(true, $row);
 			
 		} else { // Not a match!
-			$errors[] = 'The email address and password entered do not match those on file.';
+			$errors[] = 'The username and password entered do not match those on file.';
 		}
 		
 	} // End of empty($errors) IF.

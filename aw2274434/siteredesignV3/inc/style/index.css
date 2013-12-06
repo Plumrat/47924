@@ -169,7 +169,7 @@ h1.tabtitle {
 	
 }
 		
-.table	{
+.termtable	{
 
 	position:relative;
 	background:url(../img/boxbg.png);
@@ -183,16 +183,16 @@ h1.tabtitle {
 	
 }
 
-td	{
+.termtable td	{
 	border-bottom:1px solid #5e0000;
 	margin:0;
 	padding:10px 5px 2px 5px;
 }
-tr	{
+.termtable tr	{
 	margin:0;
 	padding:0;
 }
-tr:hover	{
+.termtable tr:hover	{
 color:#e1d5c1;
 }
 
@@ -222,70 +222,102 @@ text-align:center;
 padding-right:10px;
 width:100px;
 }
-		
-				
+						
 
+.caltable	{
+	padding:2px;
+	border: none;
+	width:200px;
+	font:bold 1em sans-serif;
 	
 	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	#Calendar {
-	width:300px;	
 }
 
 #Calendar td {
+	padding:2px;
+	text-decoration:none;
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
+	
+	height:8px;
 }
 
 #Calendar .cMonth {
 	font-weight:bold;
 	text-align:center;
+	border-top:1px solid #8b0000;
+	border-left:1px solid #8b0000;
+	border-bottom:1px solid #5e0000;
+	border-right:1px solid #5e0000;
 }
 
 #Calendar .wDays {
 	font-weight:bold;
 	text-align:center;
-	background-color:#CCC;
+	background-color:#770000;
+	border-top:1px solid #8b0000;
+	border-left:1px solid #8b0000;
+	border-bottom:1px solid #5e0000;
+	border-right:1px solid #5e0000;
+	
 }
 
 #Calendar .mNav {
 	font-weight:bold;
-	text-align:center;
-	background-color:#CCC;
+	background-color:#770000;
+	text-decoration:none;
+	border:none;
+	
 }
+
+#next_prev	{
+	width:100%;
+	border-top:1px solid #8b0000;
+	border-left:1px solid #8b0000;
+	border-bottom:1px solid #5e0000;
+	border-right:1px solid #5e0000;
+}
+
 
 #Calendar table td a {
 	text-decoration:none;
-	color:#000;
+	color:#c3ab84;
+	
 }
 
 #Calendar table td a:hover {
-	text-decoration:underline;
+	text-decoration:none;
+	color:#c3ab84;
 }
 
 
 #Calendar .withevent {
 	text-align:center;
-	background-color:#CCC;
-	color:#000;
+	background-color:#9e0000;
+	color:#c3ab84;
 	cursor:pointer;
+	height:10px;
+	border-top:1px solid #b20000;
+	border-left:1px solid #b20000;
+	border-bottom:1px solid #5e0000;
+	border-right:1px solid #5e0000;
+
+}
+#Calendar .withevent:hover	{
+	color:#e1d5c1;
+	text-decoration:none;
+	outline:none;
 }
 
 #Calendar .noevent {
 	text-align:center;
-	background-color:#FFF;
-	color:#000;
+	background-color:#770000;
+	color:#c3ab84;
+	height:10px;
+	border-top:1px solid #8b0000;
+	border-left:1px solid #8b0000;
+	border-bottom:1px solid #5e0000;
+	border-right:1px solid #5e0000;
+	
 }
 
 

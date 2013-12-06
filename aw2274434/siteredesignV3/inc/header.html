@@ -28,22 +28,34 @@
 	<div class="tabcont">
 	<img id="logo" src="inc/img/fistsbeige8.png" alt="" />
 		<div id="rightbox">
-				<div id="control_panel">
+        <div id="control_panel">
 				<ul id="navlist" >
-				<li><a class="navtab"  href="login.php">Login</a></li>
-				<li><a class="navtab"  href="register.php">Register</a></li>
-				<li><a class="navtab"  href="view_users.php">View Users</a></li>
-				<li><a class="navtab"  href="pass.php">Change Password</a></li>
-				<li><a class="navtab"  href="events.php">Add an Event</a></li>
-				<li><a class="navtab"  href="terms.php">Add a Term</a></li>
-				</ul>
-				</div>
-			For more information and to book your free trial, call: <br />
-			760-568 0961<br /><br />
-
-			68225<br />
-			Ramon Road<br />
-			at Whispering Palms<br />
-			Cathedral City<br />
+      
+				<?php
+                  if (isset($_SESSION['user_id'])){
+                echo '<li><a class="navtab"  href="login.php">Logout</a></li>';
+                 } else {
+                echo '<li><a class="navtab"  href="login.php">Login</a></li>';
+                 }
+                 
+                 
+                if (isset($_SESSION['user_id'])) {
+                echo '<li><a class="navtab"  href="register.php">Register</a></li>';
+				echo '<li><a class="navtab"  href="view_users.php">View Users</a></li>';
+				echo '<li><a class="navtab"  href="pass.php">Change Password</a></li>';
+				echo '<li><a class="navtab"  href="events.php">Add an Event</a></li>';
+				echo '<li><a class="navtab"  href="terms.php">Add a Term</a></li></ul></div>';
+				} else { 
+                
+				
+			echo "</ul></div>For more information and to book your free trial, call: <br />";
+			echo "760-568 0961 <br /><br />";
+			echo "68225<br />";
+			echo "Ramon Road<br />";
+			echo "at Whispering Palms<br />";
+			echo "Cathedral City<br />";
+            
+            }
+            ?>
 		</div>
 <div id="leftbox">

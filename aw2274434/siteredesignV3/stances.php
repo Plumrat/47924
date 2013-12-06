@@ -1,5 +1,5 @@
-		<?php
-	
+	<?php
+	session_start();
 	include ('inc/header.html');
 	?>
 	<style>
@@ -59,7 +59,7 @@ div#body_container>a.tab05 {
             if (!$r) {
             die('Invalid query: ' . mysqli_error());
             }
-            echo "<table class='table'>";
+            echo "<table class='termtable'>";
             echo "<th colspan=2><h2>Stances</h2></th>";
             echo '<tr><th><h3><a href="'.($_SERVER['PHP_SELF']).'?sort=ts">Term</a></th>';
             echo '<th><h3><a href="'.($_SERVER['PHP_SELF']).'?sort=tm">Meaning</a></th></tr>';

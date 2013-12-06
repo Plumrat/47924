@@ -1,5 +1,5 @@
 	<?php
-	
+	session_start();
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,7 +11,7 @@ div#body_container>a.tab02 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
+<!-------------------------------------Instructors------------------------------------->
 		<?php
 		include ('inc/aboutlinks.html');
 		?>

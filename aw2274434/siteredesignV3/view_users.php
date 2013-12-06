@@ -1,5 +1,5 @@
 	<?php
-	
+	session_start();
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,7 +11,7 @@ div#body_container>a.tab01 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
+<!-------------------------------------View Users------------------------------------->
 			<div id="leftbox">
 			<?php
 
@@ -29,7 +29,7 @@ div#body_container>a.tab01 {
 			if (isset($_GET['p']) && is_numeric($_GET['p'])) {
 				$pages = $_GET['p'];
 				} else {
-				$q = "SELECT COUNT(user_id) FROM aw2274434_users";
+				$q = "SELECT COUNT(user_id) FROM aw2274434_karate_users";
 				$r = @mysqli_query ($dbc, $q);
 				$row = @mysqli_fetch_array ($r, MYSQLI_NUM);
 				$records = $row[0];
@@ -54,10 +54,13 @@ div#body_container>a.tab01 {
 					$order_by = 'first_name ASC';
 					break;
 				case 'rd':
-					$order_by = 'registration_date ASC';
+					$order_by = 'reg_date ASC';
+					break;
+				case 'un':
+					$order_by = 'username ASC';
 					break;
 				default:
-					$order_by = 'registration_date ASC';
+					$order_by = 'reg_date ASC';
 					$sort = 'rd';
 					break;
 				}
@@ -66,7 +69,7 @@ div#body_container>a.tab01 {
 			
 			
 			
-			$q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM aw2274434_users ORDER BY $order_by LIMIT $start, $display";		
+			$q = "SELECT username, last_name, first_name, DATE_FORMAT(reg_date, '%M %d, %Y'), user_id FROM aw2274434_karate_users ORDER BY $order_by LIMIT $start, $display";		
 			$r = @mysqli_query ($dbc, $q);
 			
 			
@@ -75,10 +78,11 @@ div#body_container>a.tab01 {
 			
 			
 			
-			echo '<table class="table" >
+			echo '<table class="termtable" >
 				<tr>
 					<td align="center"></td>
 					<td align="center"></td>
+					<td align="left"><h3><a href="view_users.php?sort=un">Username</a></h3></td>
 					<td align="left"><h3><a href="view_users.php?sort=ln">Last Name</a></h3></td>
 					<td align="left"><h3><a href="view_users.php?sort=fn">First Name</a></h3></td>
 					<td align="left"><h3><a href="view_users.php?sort=rd">Date Registered</a></h3></td>
@@ -91,9 +95,10 @@ div#body_container>a.tab01 {
 				echo '<tr>
 						<td align="left"><a href="edit_user.php?id=' . $row['user_id'] . '">Edit</a></td>
 						<td align="left"><a href="delete_user.php?id=' . $row['user_id'] . '">Delete</a></td>
+						<td align="left">' . $row['username'] . '</td>
 						<td align="left">' . $row['last_name'] . '</td>
 						<td align="left">' . $row['first_name'] . '</td>
-						<td align="left">' . $row['dr'] . '</td>
+						<td align="left">' . $row['reg_date'] . '</td>
 					</tr>
 					';
 				}
