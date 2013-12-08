@@ -1,7 +1,7 @@
 	<?php
 	include ('inc/header.html');
 	?>
-		<div id="leftbox">
+		
 			<?php 
 				if (!empty($_REQUEST['cf_name'])) {
 					$name = $_REQUEST['cf_name'];

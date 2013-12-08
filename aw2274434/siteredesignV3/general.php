@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'Terminology&nbsp|&nbspGeneral Terms';
 	include ('inc/header.html');
 	?>
 	<style>

@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'Gallery';
 	include ('inc/header.html');
 	?>
 	<style>

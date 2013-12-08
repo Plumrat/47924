@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	include ('inc/config.inc.php');
+	$page_title = 'Terminology&nbsp|&nbspBlocks';
 	include ('inc/header.html');
 	?>
 	<style>

@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'Contact';
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,8 +12,8 @@ div#body_container>a.tab06 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
-		<div id="leftbox">
+<!-------------------------------------Contact------------------------------------->
+		
 
 		<form action="handle_form.php" method="post">
 			<fieldset><legend>Enter your information in the form below:</legend>

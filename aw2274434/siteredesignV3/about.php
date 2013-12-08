@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'About the Dojo';
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,7 +12,7 @@ div#body_container>a.tab02 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
+<!-------------------------------------About------------------------------------->
 		<?php
 		include ('inc/aboutlinks.html');
 		?>

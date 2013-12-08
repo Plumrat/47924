@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'Terminology&nbsp|&nbspStances';
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,7 +12,7 @@ div#body_container>a.tab05 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
+<!-------------------------------------Stances------------------------------------->
 		<h1 class="tabtitle">Terminology</h1>
 			<?php
 		include ('inc/termlinks.html');
@@ -77,7 +78,7 @@ div#body_container>a.tab05 {
 			mysqli_free_result ($r);
 			mysqli_close($dbc);
 			
-if ($pages > 1) {
+				if ($pages > 1) {
 				echo '<br /><p>';
 				$current_page = ($start/$display) + 1;
 				if ($current_page != 1) {

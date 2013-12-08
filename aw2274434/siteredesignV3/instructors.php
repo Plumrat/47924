@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'Instructors';
 	include ('inc/header.html');
 	?>
 	<style>
@@ -27,7 +28,7 @@ div#body_container>a.tab02 {
                             if (!$r) {
                                 die('Invalid query: ' . mysqli_error());
                             }
-                                echo "<table width='599' class='table'>";
+                                echo "<table width='599' class='termtable'>";
                             
                             while ($re = @mysqli_fetch_array($r, MYSQLI_ASSOC))	{
                                     echo "<tr><td><img src='inc/img/".$re['image']."' width='100px'></td>";

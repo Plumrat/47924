@@ -8,6 +8,22 @@ html	{
 	background:#000000;}						
 body,h1	{
 	margin:0;}
+	
+a:link,
+a:active,
+a:focus,
+a:visited	{
+color:#c3ab84;
+text-decoration:none;
+outline:none;
+}
+a:hover	{
+	color:#e1d5c1;
+	text-decoration:none;
+	outline:none;
+}
+	
+	
 
 
 #head_container	{
@@ -141,6 +157,7 @@ a.navtab:hover	{
 
 	
 #leftbox	{
+
 width:663px;
 height:390px;
 padding-right:25px;
@@ -179,7 +196,7 @@ h1.tabtitle {
 	width:588px;
 	font:1em sans-serif;
 	text-align:left;
-	
+	color:#c3ab84;
 	
 }
 
@@ -187,28 +204,20 @@ h1.tabtitle {
 	border-bottom:1px solid #5e0000;
 	margin:0;
 	padding:10px 5px 2px 5px;
+	
 }
 .termtable tr	{
 	margin:0;
 	padding:0;
 }
+.termtable h2:hover	{
+color:#c3ab84;
+}
 .termtable tr:hover	{
 color:#e1d5c1;
 }
 
-a:link,
-a:active,
-a:focus,
-a:visited	{
-color:#c3ab84;
-text-decoration:none;
-outline:none;
-}
-a:hover	{
-	color:#e1d5c1;
-	text-decoration:none;
-	outline:none;
-	}	
+	
 
 #termlinks,
 #aboutlinks	{
@@ -223,21 +232,43 @@ padding-right:10px;
 width:100px;
 }
 						
+.event_table	{
+color:#c3ab84;
+	position:relative;
+	width:450px;
+	top:-225px;
+	left:200px;
+	font:bold 1em sans-serif;
+	text-align:left;
+}
+
+.event_table td,
+.event_table th	{
+
+	padding:5px 20px 5px 20px;
+	border-top:1px solid #8b0000;
+	border-left:1px solid #8b0000;
+	border-bottom:1px solid #5e0000;
+	border-right:1px solid #5e0000;
+}
 
 .caltable	{
 	padding:2px;
 	border: none;
-	width:200px;
-	font:bold 1em sans-serif;
-	
-	
+	width:160px;
+	font:bold 1em sans-serif;	
+	color:#c3ab84;
 }
-
+	
+.eventheads	{
+text-align:center;
+font-size:1.2em;
+}
+	
 #Calendar td {
 	padding:2px;
 	text-decoration:none;
 	font-family:Arial, Helvetica, sans-serif;
-	
 	height:8px;
 }
 

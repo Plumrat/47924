@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'View Users';
 	include ('inc/header.html');
 	?>
 	<style>
@@ -12,18 +13,24 @@ div#body_container>a.tab01 {
 
 
 <!-------------------------------------View Users------------------------------------->
-			<div id="leftbox">
+			
 			<?php
 
 			$page_title = 'View the Current Users';
 			echo '<h1 class="tabtitle">Registered Users</h1>';
 			
-			
-			
-			
-			
-			
 			require ('../mysqli_connect.php');
+			
+			
+			if (isset($_SESSION['user_id'])) {	//IF LOGGED IN
+                  
+               
+                 
+					
+						
+						
+				
+				
 			$display = 8;
 
 			if (isset($_GET['p']) && is_numeric($_GET['p'])) {
@@ -69,7 +76,7 @@ div#body_container>a.tab01 {
 			
 			
 			
-			$q = "SELECT username, last_name, first_name, DATE_FORMAT(reg_date, '%M %d, %Y'), user_id FROM aw2274434_karate_users ORDER BY $order_by LIMIT $start, $display";		
+			$q = "SELECT username, last_name, first_name, DATE_FORMAT(reg_date, '%M %d, %Y') AS dr, user_id FROM aw2274434_karate_users ORDER BY $order_by LIMIT $start, $display";		
 			$r = @mysqli_query ($dbc, $q);
 			
 			
@@ -92,13 +99,18 @@ div#body_container>a.tab01 {
 			while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 				//$bg = ($bg=='#770000');
 				//echo '<tr bgcolor="' . $bg . '">
-				echo '<tr>
-						<td align="left"><a href="edit_user.php?id=' . $row['user_id'] . '">Edit</a></td>
-						<td align="left"><a href="delete_user.php?id=' . $row['user_id'] . '">Delete</a></td>
-						<td align="left">' . $row['username'] . '</td>
+				echo '<tr>';
+							if ($_SESSION['user_level'] == 1) {	//IF ADMIN
+									echo '<td align="left"><a href="edit_user.php?id=' . $row['user_id'] . '">Edit</a></td>
+									<td align="left"><a href="delete_user.php?id=' . $row['user_id'] . '">Delete</a></td>';
+									} else {
+									echo '<td align="center"></td>
+									<td align="center"></td>';
+									}
+						echo '<td align="left">' . $row['username'] . '</td>
 						<td align="left">' . $row['last_name'] . '</td>
 						<td align="left">' . $row['first_name'] . '</td>
-						<td align="left">' . $row['reg_date'] . '</td>
+						<td align="left">' . $row['dr'] . '</td>
 					</tr>
 					';
 				}
@@ -124,9 +136,14 @@ div#body_container>a.tab01 {
 					}
 				echo '</p>';	
 				}
+				
+				
+				
+				} else { //IF NOT LOGGED IN			
+              echo 'You are not authorized to view this page. Please log in or register.';
+                 }
 			?>
-			</div>
-		</div>	
-	</div>
-</body>
-</html>
+			<!---------------------------------------------->
+			<?php
+	include ('inc/footer.html');
+	?>

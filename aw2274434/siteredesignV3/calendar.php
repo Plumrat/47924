@@ -1,16 +1,16 @@
 <?php
 
 error_reporting(0);
-include("config.php");
+require ('../mysqli_connect.php');
 
 
 (intval($_REQUEST["month"])>0) ? $cMonth = intval($_REQUEST["month"]) : $cMonth = date("m");
 (intval($_REQUEST["year"])>0) ? $cYear = intval($_REQUEST["year"]) : $cYear = date("Y");
 
 
-$sql = "SELECT * FROM ".$SETTINGS["data_table"]." WHERE `event_date` LIKE '".$cYear."-".$cMonth."-%'";
-$sql_result = mysql_query ($sql, $connection ) or die ('request "Could not execute SQL query" '.$sql);
-while ($row = mysql_fetch_assoc($sql_result)) {
+$sql = "SELECT * FROM aw2274434_karate_events WHERE `event_date` LIKE '".$cYear."-".$cMonth."-%'";
+$sql_result = @mysqli_query ($dbc, $sql) or die ('request "Could not execute SQL query" '.$sql);
+while ($row = mysqli_fetch_assoc($sql_result)) {
 	$events[$row["event_date"]]["title"] = $row["title"];
 	$events[$row["event_date"]]["description"] = $row["description"];
 }
@@ -34,7 +34,7 @@ if ($prev_month<10) $prev_month = '0'.$prev_month;
 if ($next_month<10) $next_month = '0'.$next_month;
 ?>  
 
-<table class="caltable">
+<table><tr><table class="caltable">
 <tr>
 <td>
 <table id="next_prev">

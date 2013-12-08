@@ -1,5 +1,6 @@
 	<?php
-	session_start();
+	require ('inc/config.inc.php');
+	$page_title = 'Edit User Info';
 	include ('inc/header.html');
 	?>
 	<style>
@@ -11,20 +12,34 @@ div#body_container>a.tab01 {
 
 
 
-<!-------------------------------------HOME------------------------------------->
-		<div id="leftbox">
+<!-------------------------------------Edit User------------------------------------->
+		
 		<?php 
-			$page_title = 'Edit a User';
-			echo '<h1>Edit a User</h1>';
+		
+		if (isset($_SESSION['user_id'])){
+			if ($_SESSION['user_level'] == 1 ){
+		
+			if (isset($_SESSION['user_id'])){
+			if ($_SESSION['user_level'] == 0 ){	//IF LOGGED IN
+				$id = $_SESSION['user_id'];
+				
+				$page_title = 'Edit Personal Information';
+				echo '<h1>Edit a User</h1>';
+				
+			} elseif ($_SESSION['user_level'] == 1) {	//IF ADMIN
+				
+				$page_title = 'Edit a User';
+				echo '<h1>Edit a User</h1>';
+				
+					if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) {
+					$id = $_GET['id'];
+					} elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) {
+					$id = $_POST['id'];
+					}
+				}
+			
 
-			if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) {
-				$id = $_GET['id'];
-				} elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) {
-				$id = $_POST['id'];
-				} else {
-				echo '<p class="error">This page has been accessed in error.</p>';
-				exit();}
-
+		
 			require ('../mysqli_connect.php'); 
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -60,8 +75,8 @@ div#body_container>a.tab01 {
 				$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
 				}
 				
-			if (empty($_POST['email'])) {
-				$errors[] = 'You forgot to enter your email address.';
+			if (!preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $trimmed['email'])){
+				$errors[] = 'You may not use one or more of characters that you provided in your email.';
 				} else {
 				$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
 				}
@@ -70,7 +85,7 @@ div#body_container>a.tab01 {
 				$q = "SELECT user_id FROM aw2274434_users WHERE email='$e' AND user_id != $id";
 				$r = @mysqli_query($dbc, $q);
 				if (mysqli_num_rows($r) == 0) {
-					$q = "UPDATE aw2274434_users SET first_name='$fn', last_name='$ln', email='$e' WHERE user_id=$id LIMIT 1";
+					$q = "UPDATE aw2274434_karate_users SET first_name='$fn', last_name='$ln', email='$e' WHERE user_id=$id LIMIT 1";
 					$r = @mysqli_query ($dbc, $q);
 					if (mysqli_affected_rows($dbc) == 1) {
 					echo '<p>The user has been edited.</p>';	
@@ -90,7 +105,7 @@ div#body_container>a.tab01 {
 				}
 
 
-			$q = "SELECT first_name, last_name, email FROM aw2274434_users WHERE user_id=$id";		
+			$q = "SELECT first_name, last_name, email FROM aw2274434_karate_users WHERE user_id=$id";		
 			$r = @mysqli_query ($dbc, $q);
 			if (mysqli_num_rows($r) == 1) {
 				$row = mysqli_fetch_array ($r, MYSQLI_NUM);
@@ -104,8 +119,15 @@ div#body_container>a.tab01 {
 				} else { 
 				echo '<p class="error">This page has been accessed in error.</p>';
 				}
+				
+				mysqli_close($dbc);
+	} else {
+	echo 'You are not authorized to view this page. Please log in.';
+	}
+				
 
-		mysqli_close($dbc);
+		}} else {
+		echo 'You are not authorized to view this page. Please log in or Register.';
 		?>
 
 <!---------------------------------------------->

@@ -39,7 +39,7 @@ function check_login($dbc, $username = '', $pass = '') {
 	if (empty($username)) {
 		$errors[] = 'You forgot to enter your username.';
 	} else {
-		$u = mysqli_real_escape_string($dbc, trim($username));
+		$un = mysqli_real_escape_string($dbc, trim($username));
 	}
 
 	// Validate the password:
@@ -51,12 +51,12 @@ function check_login($dbc, $username = '', $pass = '') {
 
 	if (empty($errors)) { // If everything's OK.
 
-		// Retrieve the user_id and first_name for that email/password combination:
-		$q = "SELECT user_id, username, first_name FROM aw2274434_karate_users WHERE username='$u' AND pass=SHA1('$p')";		
+		// Retrieve the user_id and first_name for that username/password combination:
+		$q = "SELECT user_id, first_name, user_level FROM aw2274434_karate_users WHERE username='$un' AND pass=SHA1('$p')";		
 		$r = @mysqli_query ($dbc, $q); // Run the query.
 		
 		// Check the result:
-		if (mysqli_num_rows($r) == 1) {
+		if (@mysqli_num_rows($r) == 1) {
 
 			// Fetch the record:
 			$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
@@ -67,6 +67,7 @@ function check_login($dbc, $username = '', $pass = '') {
 		} else { // Not a match!
 			$errors[] = 'The username and password entered do not match those on file.';
 		}
+		
 		
 	} // End of empty($errors) IF.
 	
