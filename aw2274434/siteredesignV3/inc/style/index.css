@@ -100,9 +100,7 @@ div#body_container>a	{
 
 img#logo	{
 	position:absolute;
-	top:-150px;
-	right:0;
-	bottom:0;
+width:auto;
 	left:613px;
 	visibility:visible;
 		}

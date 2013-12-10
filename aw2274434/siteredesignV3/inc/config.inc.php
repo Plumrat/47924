@@ -23,8 +23,7 @@ define ('BASE_URL', 'index.php');
 // Location of the MySQL connection script:
 define ('MYSQL', '../mysqli_connect.php');
 
-// Adjust the time zone for PHP 5.1 and greater:
-date_default_timezone_set ('US/Western');
+
 
 // ************ SETTINGS ************ //
 // ********************************** //
@@ -56,7 +55,7 @@ function my_error_handler ($e_number, $e_message, $e_file, $e_line, $e_vars) {
 
 		// Send an email to the admin:
 		$body = $message . "\n" . print_r ($e_vars, 1);
-		mail(EMAIL, 'Site Error!', $body, 'From: postmaster@localhost');
+		mail(EMAIL, 'Site Error!', $body, 'From: From: allison@ccr.tv');
 	
 		// Only print an error message if the error isn't a notice:
 		if ($e_number != E_NOTICE) {

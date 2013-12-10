@@ -12,28 +12,28 @@ h1.tabcont
 }
 	
 	
-	
-	
 #head_container	{
-		height:80px;
+margin: 0 auto;
+}
+	
+#page_title	{
+		
 		background-color:#770000;
-		width:500px;
-		font:34px impact,sans-serif;
+		font:36px impact,sans-serif;
 		line-height:1.2;
-		margin: 0 auto;
 		text-align:center;
+		
 					}
 
 
-#logo	
-{
-	position:absolute;
+#logo	{
+position:relative;
+	width:80%;
+	height:11%;
 	margin: 0 auto;
-	width:500px;
-	height:122px;
-	left:50%;
-	margin-left:-250px;
-	margin-top:-142px;
+	left:10%;
+padding:5% 0;
+	
 }
 
 
@@ -49,10 +49,11 @@ h1.tabcont
 	
 
 #body_container	{
-	position:absolute;
-	top:232px;
-	padding:0 15px;
+	position:relative;
+	top:25%;
+	padding:5%;
 	background-color:#770000;
+	margin:5%;
 		}
 		
 		
